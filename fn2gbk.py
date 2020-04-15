@@ -56,7 +56,7 @@ for i in result_gtf:
     result1.append("     exon            {0}..{1}".format(i[3], i[4]))
     result1.append("                     /label=\"{}\"".format(i[8].split("\"")[5]))
 result1.append("ORIGIN")
-#Next block has an issue that the number of nucleotides is not calculated correctly
+#Add the actual sequence
 for h, i in zip(range(1, len(fasta), 60), range(0, len(result0), 6)):
         result1.append("{:>9}".format(str(h)) + " " + " ".join(result0[i:i+6]))
 result1.append("//")
