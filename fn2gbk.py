@@ -1,4 +1,5 @@
 #!/usr/bin/python3
+#fn2gbk python3 script version 0.2
 import argparse
 #argument parsing
 parser = argparse.ArgumentParser(description='Convert Fasta sequence file with bed and gtf features to geneBank flat format.')
