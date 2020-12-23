@@ -8,8 +8,8 @@ The script does not require installation.**
 ### Usage: 
 
 ```python3
-fn2gbk [-h] [-f FASTA_FILE] [-b BED_FILE] [-g GTF_FILE] [-n NAME] 
-            [-o ORGANISM] [-a AUTHOR] [-t MOLECULE_TYPE] [-r REVERSE_COMPLEMENT]
+fn2gbk [-h] [-f FASTA_FILE] [-b BED_FILE] [-g GTF_FILE] [-n NAME] [-o ORGANISM] 
+            [-a AUTHOR] [-t MOLECULE_TYPE] [-r REVERSE_COMPLEMENT]
 ```
 
 ---
