@@ -14,20 +14,29 @@ fn2gbk [-h] [-f FASTA_FILE] [-b BED_FILE] [-g GTF_FILE] [-n NAME]
 
 ### Arguments:
 
-+  `-h` or `--help`$~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~$Show the help message and exit.
++  `-h` or `--help`
+&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&nbsp;Show the help message and exit.
  
-+  `-f` or `--fasta`               Input fasta file with single sequence line after header.
++  `-f` or `--fasta`
+&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&nbsp;&nbsp; Input fasta file with single sequence line after header.
                         
-+  `-b` or `--bed`                 Bed file of features on fasta file.
++  `-b` or `--bed`
+&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&nbsp;&nbsp; Bed file of features on fasta file.
   
-+  `-g` or `--gtf`                 Gtf file of features on fasta file.
++  `-g` or `--gtf`
+&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&nbsp;&nbsp; Gtf file of features on fasta file.
   
-+  `-n` or `--name`                Name of stored sequence and region.
++  `-n` or `--name`
+&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp; Name of stored sequence and region.
   
-+  `-o` or `--organism`             Name of organism.
++  `-o` or `--organism`
+&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp; Name of organism.
  
-+  `-a` or `--author`               Authors name. Default is "FASTA & BED to GBK script".
++  `-a` or `--author`
+&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp; Authors name. Default is "FASTA & BED to GBK script".
  
-+  `-t` or `--molecule_type`       Type of molecule. Default is "genomic DNA".
++  `-t` or `--molecule_type`
+&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&nbsp;&nbsp;&nbsp; Type of molecule. Default is "genomic DNA".
   
-+  `-r` or `--reverse_complement`  Whether to make a reverse complement GBK of the input files. Default is "FALSE".
++  `-r` or `--reverse_complement`
+&emsp;&emsp;&emsp;&emsp;&emsp;&nbsp;&nbsp; Whether to make a reverse complement GBK of the input files. Default is "FALSE".
