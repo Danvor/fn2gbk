@@ -1,5 +1,4 @@
 #!/usr/bin/python3
-#fn2gbk python3 script version 0.2
 import argparse
 #argument parsing
 parser = argparse.ArgumentParser(description='Convert Fasta sequence file with bed and gtf features to geneBank flat format.')
@@ -10,33 +9,46 @@ parser.add_argument('-n', '--name', help='Name of stored sequence and region.')
 parser.add_argument('-o', '--organism', help='Name of organism.')
 parser.add_argument('-a', '--author', default='FASTA & BED to GeneBank GBK script', help='Authors name. Default is \"FASTA & BED to GBK script\".')
 parser.add_argument('-t', '--molecule_type', default='genomic DNA', help='Type of molecule. Default is \"genomic DNA\"')
+parser.add_argument('-r', '--reverse_complement', default='FALSE', help='Whether to make a reverse complement GBK of the input files. Default is \"FALSE\"')
 args = parser.parse_args()
 #preparing input files
-#fasta file
 input_fasta_file = open("./{}".format(args.fasta))
+input_bed_file = open("./{}".format(args.bed))
+input_gtf_file = open("./{}".format(args.gtf))   
+#fasta file
 input_fasta = input_fasta_file.read()
 header = input_fasta.splitlines()[0]
-fasta = input_fasta.splitlines()[1]
+fasta_seq = input_fasta.splitlines()[1].lower()
+fasta = []
+if args.reverse_complement == "TRUE":
+    fasta.append(fasta_seq[::-1].translate(fasta_seq.maketrans("atgc","tacg")))
+else:   
+    fasta.append(fasta_seq)
+fasta = fasta[0]
 result0 = []
 for i in range(0, len(fasta), 10):
-   result0.append(fasta[i:i+10].lower())
+   result0.append(fasta[i:i+10])
+
 #bed file
-input_bed_file = open("./{}".format(args.bed))
 bed_lines = input_bed_file.read().splitlines()
 result_bed = []
 for b in bed_lines:
-    result_bed.append(b.split("\t"))
+    if args.reverse_complement == "TRUE":
+        result_bed.append([b.split("\t")[0], str(len(fasta)-int(b.split("\t")[2])+1), str(len(fasta)-int(b.split("\t")[1])), b.split("\t")[3]])
+    else:
+        result_bed.append(b.split("\t"))
 #gtf file
-input_gtf_file = open("./{}".format(args.gtf))
 gtf_lines = input_gtf_file.read().splitlines()
 result_gtf = []
 for g in gtf_lines:
-    result_gtf.append(g.split("\t"))
-
+    if args.reverse_complement == "TRUE":
+        result_gtf.append(sum((g.split("\t")[0:3], [str(len(fasta)-int(g.split("\t")[4]))], [str(len(fasta)-int(g.split("\t")[3]))], g.split("\t")[5:]), []))
+    else:
+        result_gtf.append(g.split("\t"))
 #writing GBK file into a variable
 result1 = []
 result1.append("LOCUS       {0}               {1} bp ds-DNA     linear".format(header[1:], len(fasta)))
-result1.append("DEFINITION  }".format(args.name))
+result1.append("DEFINITION  {}".format(args.name))
 result1.append("ACCESSION   .")
 result1.append("VERSION     .")
 result1.append("KEYWORDS    {}".format(args.name))
@@ -57,7 +69,6 @@ for i in result_gtf:
     result1.append("     exon            {0}..{1}".format(i[3], i[4]))
     result1.append("                     /label=\"{}\"".format(i[8].split("\"")[5]))
 result1.append("ORIGIN")
-#Add the actual sequence
 for h, i in zip(range(1, len(fasta), 60), range(0, len(result0), 6)):
         result1.append("{:>9}".format(str(h)) + " " + " ".join(result0[i:i+6]))
 result1.append("//")
