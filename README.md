@@ -2,7 +2,7 @@
 **A Python3 script tool to convert FASTA with BED regions and GTF annotations to GenBank flat file format.
 The script does not require installation.**
 
-###Usage: 
+### Usage: 
 
 ```python3
 fn2gbk [-h] [-f FASTA_FILE] [-b BED_FILE] [-g GTF_FILE] [-n NAME] 
@@ -11,7 +11,7 @@ fn2gbk [-h] [-f FASTA_FILE] [-b BED_FILE] [-g GTF_FILE] [-n NAME]
 
 ---
 
-###Arguments:
+### Arguments:
 
 +  `-h` or `--help`  Show the help message and exit.
  
